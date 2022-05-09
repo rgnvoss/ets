@@ -1,0 +1,36 @@
+Content-Type: multipart/alternative;
+ boundary="===============2354658955352887122=="
+MIME-Version: 1.0
+Date: Mon, 23 Sep 2019 15:39:35 -0700
+Subject: Test Message: Mon, 23 Sep 2019 15:39:35 -0700
+From: rvoss@shodan.spt.proofpoint.com
+To: rvoss@proofpoint.com
+Message-Id: <156927837535.829.12292573087471967464@FRC1QN2.corp.proofpoint.com>
+Importance: medium
+X-Priority: 3
+X-Mailer: TINS v2.1.1
+
+--===============2354658955352887122==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+This is a test message.
+The python has spoken!
+Nyaah!
+
+--===============2354658955352887122==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+		<html>
+			<body>
+		
+		<p><b>This is a test message!</b></p>
+		<p>The python has spoken! Nyaah!</p>
+
+			</body>
+		</html>
+		
+--===============2354658955352887122==--
