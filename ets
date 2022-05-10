@@ -25,7 +25,7 @@ from email import charset
 LNAME = "Email Testing System"
 SNAME = "ets"
 VERSION = "1.0.0"
-BUILD = "220509.01"
+BUILD = "220510.01"
 SUFFIX = "Beta"
 PNAME = LNAME + " (" + SNAME + ") v" + VERSION + "-" + BUILD + " " + SUFFIX
 
@@ -682,7 +682,7 @@ def tty_rows(tty_count):
 def help_out():
 	out = PNAME + """
 Usage:
-   notswaks <options>
+   ets <options>
 Options:
    -h, --help [this info]
    -s, --server, --target [target mail server]
@@ -699,7 +699,7 @@ Options:
          warning (default)
          error
          critical]
-   --log-file [set name of log file, defaults to notswaks.log, implies --log]
+   --log-file [set name of log file, defaults to ets.log, implies --log]
    --mix, --mixed [use multipart/mixed instead of multipart/alternative]
    --to-header [to: header if different from recipient]
    --from-header [from: header if different from sender]
@@ -774,7 +774,7 @@ def main(argv):
 	is_attach = False
 	is_logging = False
 	log_level = logging.WARNING
-	log_file = 'notswaks.log'
+	log_file = 'ets.log'
 	log_init = ''
 	log_warn = False
 	looping = False
