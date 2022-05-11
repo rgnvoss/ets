@@ -24,8 +24,8 @@ from email import charset
 
 LNAME = "Email Testing System"
 SNAME = "ets"
-VERSION = "1.0.0"
-BUILD = "220510.01"
+VERSION = "1.0.2"
+BUILD = "220511.04"
 SUFFIX = "Beta"
 PNAME = LNAME + " (" + SNAME + ") v" + VERSION + "-" + BUILD + " " + SUFFIX
 
@@ -617,14 +617,6 @@ def attach_file(attach_msg, file_attach):
 		sys.exit( "Adding %s file failed: %s\r\nExiting." % (file_attach, str(exc)) ) # give a error message
 	return attach_msg
 
-def try_tls(tls_serv):
-	logging.info("Trying TLS")
-	try:
-		tls_serv.starttls()
-	except Exception as exc:
-		logging.critical( "Email failed: %s\r\nExiting." % str(exc) )
-		sys.exit( "Email failed: %s\r\nExiting." % str(exc) ) # give a error message
-
 def send_email(send_target, send_port, send_sender, send_recipient, send_body, send_tls):
 	logging.info("Sending email")
 	t = TemporaryFile()
@@ -638,7 +630,13 @@ def send_email(send_target, send_port, send_sender, send_recipient, send_body, s
 		server.set_debuglevel(100)
 		server.ehlo_or_helo_if_needed()
 		if send_tls:
-			try_tls(server)
+			logging.info("Using TLS")
+			try:
+				server.starttls()
+				server.ehlo()
+			except Exception as exc:
+				logging.critical( "Email failed: %s\r\nExiting." % str(exc) )
+				sys.exit( "Email failed: %s\r\nExiting." % str(exc) )
 		server.sendmail(send_sender, send_recipient, send_body)
 		server.quit()
 		sys.stderr.flush()
@@ -781,8 +779,13 @@ def main(argv):
 	loop_count = 0
 
 	try:
-		opts, args = getopt.getopt(argv,"vh:s:p:t:f:e:x:l:",["version","server=","target=","port=","to=","recipient=","from=","sender=","loop=",
-			 "ehlo=","helo=","to-header=","from-header=","subject=","ssl","tls","spam","adult","virus","av","url","zip","eml","write","no-send","eml-name=","no-text","no-html","xm=","x-mailer=","text-encode=","text-charset=","html-encode=","html-charset=","encode=","charset=","body-text=","body-html=","ssn","mix","mixed","high","low","text-body=","html-body=","attach=","log","log-level=","log-file="])
+		opts, args = getopt.getopt(argv,"vh:s:p:t:f:e:x:l:",["version","server=","target=", \
+			"port=","to=","recipient=","from=","sender=","loop=","ehlo=","helo=","to-header=", \
+			"from-header=","subject=","ssl","tls","spam","adult","virus","av","url","zip", \
+			"eml","write","no-send","eml-name=","no-text","no-html","xm=","x-mailer=", \
+			"text-encode=","text-charset=","html-encode=","html-charset=","encode=","charset=", \
+			"body-text=","body-html=","ssn","mix","mixed","high","low","text-body=", \
+			"html-body=","attach=","log","log-level=","log-file="])
 	except getopt.GetoptError:
 		help_out()
 		sys.exit(2)
@@ -909,6 +912,12 @@ def main(argv):
 		logging.info(log_init)
 
 	logging.debug('Parameters:' + str(sys.argv[1:]))
+
+	if eml_send:
+		if target == "smtp.example.com" or recipient == "recipient@example.com":
+			logging.info("Unable to generate email: Target server and recipient are required to send.")
+			sys.exit("Unable to send email: Target server and recipient are required to send.\r\nExiting.")
+	
 	logging.info("Beginning email creation")
 
 	if encode_both:
@@ -974,6 +983,8 @@ def main(argv):
 	else:
 
 		if eml_send:
+			if target == "smtp.example.com" or recipient == "recipient@example.com":
+				sys.exit("Target server and recipient are required.\r\nExiting.")
 			logging.debug("Sending email")
 			send_email(target, port, sender, recipient, body, tls)
 			logging.debug("Email sent")
