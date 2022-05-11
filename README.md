@@ -29,7 +29,7 @@ Email Content Options:<br>
 &nbsp;&nbsp;--body-html&nbsp;&nbsp;:&nbsp;&nbsp;HTML body string.<br>
 &nbsp;&nbsp;--text-encode, --text-charset&nbsp;&nbsp;:&nbsp;&nbsp;Text section character encoding.<br>
 &nbsp;&nbsp;--html-encode, --html-charset&nbsp;&nbsp;:&nbsp;&nbsp;HTML section character encoding.<br>
-&nbsp;&nbsp;--encode, --charset&nbsp;&nbsp;:&nbsp;&nbsp;Character encoding for both text and html sections (overrides  --text-encode, --text-charset, --html-encode, & --html-charset).<br>
+&nbsp;&nbsp;--encode, --charset&nbsp;&nbsp;:&nbsp;&nbsp;Character encoding text and HTML sections (overrides  --text-encode, --text-charset, --html-encode, & --html-charset).<br>
 &nbsp;&nbsp;--url&nbsp;&nbsp;:&nbsp;&nbsp;Include malicious URL in email.<br>
 &nbsp;&nbsp;--ssn&nbsp;&nbsp;:&nbsp;&nbsp;Include SSN numbers in email.<br>
 &nbsp;&nbsp;--av, --virus&nbsp;&nbsp;:&nbsp;&nbsp;Attach eicar test virus to email.<br>
