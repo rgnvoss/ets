@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Email Testing System (ets)
+# Email Testing System (ETS)
 # Written by Rob Voss
 
 import time
@@ -21,11 +21,12 @@ from email.mime.audio import MIMEAudio
 from email.mime.image import MIMEImage
 from random import randint
 from email import charset
+from pydoc import pager as paging
 
 LNAME = "Email Testing System"
-SNAME = "ets"
-VERSION = "1.0.2"
-BUILD = "220511.04"
+SNAME = "ETS"
+VERSION = "1.0.4"
+BUILD = "220511.09"
 SUFFIX = "Beta"
 PNAME = LNAME + " (" + SNAME + ") v" + VERSION + "-" + BUILD + " " + SUFFIX
 
@@ -484,7 +485,7 @@ Email Address & Phone Number(Please Write Neat)
 """
 	return spammy_html
 
-def mime_headers(mime_multipart, mime_msg_id, mime_xmailer, mime_timestamp, mime_subject, mime_from_header, mime_to_header, mime_importance, mime_priority):
+def mime_headers(mime_multipart, mime_msg_id, mime_xmailer, mime_timestamp, mime_subject, mime_from_header, mime_to_header, mime_importance, mime_priority, mime_return, mime_reply):
 	logging.info("Generating MIME headers")
 	try:
 		mime_msg = MIMEMultipart(mime_multipart)
@@ -492,6 +493,8 @@ def mime_headers(mime_multipart, mime_msg_id, mime_xmailer, mime_timestamp, mime
 		mime_msg['Subject'] = mime_subject
 		mime_msg['From'] = mime_from_header
 		mime_msg['To'] = mime_to_header
+		mime_msg['Return-PATH'] = mime_return
+		mime_msg['Reply-To'] = mime_reply
 		mime_msg['Message-Id'] = mime_msg_id
 		mime_msg['Importance'] = mime_importance
 		mime_msg['X-Priority'] = mime_priority
@@ -679,56 +682,90 @@ def tty_rows(tty_count):
 
 def help_out():
 	out = PNAME + """
-Usage:
-   ets <options>
-Options:
-   -h, --help [this info]
-   -s, --server, --target [target mail server]
-   -p, --port [target port]
-   -t, --to, --recipient [recipient]
-   -f, --from, --sender [sender]
-   -x, --xm, --x-mailer [X-Mailer header]
-   -l, --loop [number of emails to send]
-   --log [enable logging]
-   --log-level [set logging level, implies --log
-      valid values are:
-         debug
-         info
-         warning (default)
-         error
-         critical]
-   --log-file [set name of log file, defaults to ets.log, implies --log]
-   --mix, --mixed [use multipart/mixed instead of multipart/alternative]
-   --to-header [to: header if different from recipient]
-   --from-header [from: header if different from sender]
-   --body-text [text body string]
-   --body-html [html body string]
-   --text-encode, --text-charset [character encoding for text section]
-   --html-encode, --html-charset [character encoding for html section]
-   --encode, --charset [character encoding for both text and html sections
-      (overrides --text-encode/--text-charset/--html-encode/--html-charset)]
-   --high, --low [message importance (default is medium)]
-   --url [include malicious url]
-   --ssn [include ssn numbers]
-   --av, --virus [include eicar test virus]
-   --zip [include password protected zip file]
-   --eml, --write [write email to eml file]
-   --no-send [do not send email (implies --eml/--write)]
-   --eml-name [email file name (implies --eml/--write)]
-   --no-text [no text body]
-   --no-html [no html body]
-   --spam [generate test spam]
-   --adult [generate test adult spam (overrides --spam)]
-   --text-body [text body from specified file]
-   --html-body [html body from specified file]
-   --attach [attach specified file]"""
-	count = 0
-	for line in out.splitlines():
-		print (line)
-		count = tty_rows(count) + 1
+Usage: ets <options>
+
+Generate and send emails for testing.
+
+Miscellaneous Options:
+  -h, --help                             Display this help text.
+  -v, --version                          Display version information.
+
+Connection Options:
+  -s, --server, --target                 Receiving mail server (required
+                                         to send).
+  -p, --port                             Target port.
+  --ssl, --tls                           Use SSL/TLS.
+
+Envelope Options:
+  -t, --to, --recipient                  Envelope recipient (required to
+                                         send).
+  -f, --from, --sender                   Envelope sender.
+
+Header Options:
+  -x, --xm, --x-mailer                   X-Mailer header
+  --to-header                            to: header (if different from
+                                         recipient).
+  --from-header                          from: header (if different from
+                                         sender).
+  --reply-to                             Reply-To: header (if different
+                                         from sender).
+  --return-path                          Return-PATH: header (if different
+                                         from sender).
+  --high, --low                          Message importance (default is
+                                         medium).
+
+Email Content Options:
+  --mix, --mixed                         Use multipart/mixed instead of
+                                         multipart/alternative.
+  --body-text                            Text body string.
+  --body-html                            HTML body string.
+  --text-encode, --text-charset          Text section character encoding.
+  --html-encode, --html-charset          HTML section character encoding.
+  --encode, --charset                    Character encoding for both text
+                                         and html sections (overrides 
+                                         --text-encode, --text-charset,
+                                         --html-encode, & --html-charset).
+  --url                                  Include malicious URL in email.
+  --ssn                                  Include SSN numbers in email.
+  --av, --virus                          Attach eicar test virus to email.
+  --zip                                  Attach password protected zip
+                                         file to email.
+  --no-text                              No text body in email.
+  --no-html                              No html body in email.
+  --spam                                 Include spam content.
+  --adult                                Include adult spam content
+                                         (overrides --spam).
+  --text-body                            Use specified file as text body.
+  --html-body                            Use specified file as HTML body.
+  --attach                               Attach specified file.
+
+Email Generation Options:
+  -l, --loop                             Generate specified number of
+                                         emails.
+  --eml, --write                         Write email to eml file.
+  --no-send                              Do not send email (implies
+                                         --eml/--write).
+  --eml-name                             write eml file to specified file
+                                         name (implies --eml/--write).
+
+Logging Options:
+  --log                                  Enable logging.
+  --log-level                            Set logging level (implies
+                                         --log). Valid values are:
+                                           debug
+                                           info
+                                           warning (default)
+                                           error
+                                           critical
+  --log-file                             Set name of log file (defaults to
+                                         ets.log, implies --log)
+"""
+	paging(out)
+	sys.exit()
 
 def version_out():
 	print(PNAME)
+	sys.exit()
 
 def main(argv):
 	timestamp = time.strftime("%a, %d %b %Y %H:%M:%S %z")
@@ -739,6 +776,8 @@ def main(argv):
 	to_header = recipient
 	target = "smtp.example.com"
 	port = 25
+	return_header = sender
+	reply_header = sender
 	helo = ""
 	msg_id = make_msgid()
 	xmailer = PNAME
@@ -940,7 +979,7 @@ def main(argv):
 		text = spam_text_body(seed)
 		html_text = spam_html_body(seed)
 
-	msg = mime_headers(multi_type, msg_id, xmailer, timestamp, subject, from_header, to_header, msg_importance, msg_priority)
+	msg = mime_headers(multi_type, msg_id, xmailer, timestamp, subject, from_header, to_header, msg_importance, msg_priority, return_header, reply_header)
 	
 	if use_text:
 		msg_text = text_mime(msg, text, zip_test, url_test, ssn_test, text_encode)

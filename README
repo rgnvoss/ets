@@ -1,34 +1,77 @@
-Usage:
-   ets <options>
-Options:
-   -h, --help [this info]
-   -s, --server, --target [target mail server]
-   -p, --port [target port]
-   -t, --to, --recipient [recipient]
-   -f, --from, --sender [sender]
-   -x, --xm, --x-mailer [X-Mailer header]
-   --mix, --mixed [use multipart/mixed instead of multipart/alternative]
-   --to-header [to: header if different from recipient]
-   --from-header [from: header if different from sender]
-   --body-text [text body string]
-   --body-html [html body string]
-   --text-encode, --text-charset [character encoding for text section]
-   --html-encode, --html-charset [character encoding for html section]
-   --encode, --charset [character encoding for both text and html sections (overrides --text-encode/--text-charset/--html-encode/--html-charset)]
-   --high, --low [message importance (default is medium)]
-   --ssl, --tls [use ssl/tls]
-   --url [include malicious url]
-   --ssn [include ssn numbers]
-   --av, --virus [include eicar test virus]
-   --zip [include password protected zip file]
-   --eml, --write [write email to eml file]
-   --no-send [do not send email (implies --eml/--write)]
-   --eml-name [email file name (implies --eml/--write)]
-   --no-text [no text body]
-   --no-html [no html body]
-   --spam [generate test spam]
-   --adult [generate test adult spam (overrides --spam)]
-   --dbg, --debug [additional debug information]
-   --text-body [text body from specified file]
-   --html-body [html body from specified file]
-   --attach [attach specified file]
+Usage: ets <options>
+
+Generate and send emails for testing.
+
+Miscellaneous Options:
+  -h, --help                             Display help text.
+  -v, --version                          Display version information.
+
+Connection Options:
+  -s, --server, --target                 Receiving mail server (required
+                                         to send).
+  -p, --port                             Target port.
+  --ssl, --tls                           Use SSL/TLS.
+
+Envelope Options:
+  -t, --to, --recipient                  Envelope recipient (required to
+                                         send).
+  -f, --from, --sender                   Envelope sender.
+
+Header Options:
+  -x, --xm, --x-mailer                   X-Mailer header
+  --to-header                            to: header (if different from
+                                         recipient).
+  --from-header                          from: header (if different from
+                                         sender).
+  --reply-to                             Reply-To: header (if different
+                                         from sender).
+  --return-path                          Return-PATH: header (if different
+                                         from sender).
+  --high, --low                          Message importance (default is
+                                         medium).
+
+Email Content Options:
+  --mix, --mixed                         Use multipart/mixed instead of
+                                         multipart/alternative.
+  --body-text                            Text body string.
+  --body-html                            HTML body string.
+  --text-encode, --text-charset          Text section character encoding.
+  --html-encode, --html-charset          HTML section character encoding.
+  --encode, --charset                    Character encoding for both text
+                                         and html sections (overrides 
+                                         --text-encode, --text-charset,
+                                         --html-encode, & --html-charset).
+  --url                                  Include malicious URL in email.
+  --ssn                                  Include SSN numbers in email.
+  --av, --virus                          Attach eicar test virus to email.
+  --zip                                  Attach password protected zip
+                                         file to email.
+  --no-text                              No text body in email.
+  --no-html                              No html body in email.
+  --spam                                 Include spam content.
+  --adult                                Include adult spam content
+                                         (overrides --spam).
+  --text-body                            Use specified file as text body.
+  --html-body                            Use specified file as HTML body.
+  --attach                               Attach specified file.
+
+Email Generation Options:
+  -l, --loop                             Generate specified number of
+                                         emails.
+  --eml, --write                         Write email to eml file.
+  --no-send                              Do not send email (implies
+                                         --eml/--write).
+  --eml-name                             write eml file to specified file
+                                         name (implies --eml/--write).
+
+Logging Options:
+  --log                                  Enable logging.
+  --log-level                            Set logging level (implies
+                                         --log). Valid values are:
+                                           debug
+                                           info
+                                           warning (default)
+                                           error
+                                           critical
+  --log-file                             Set name of log file (defaults to
+                                         ets.log, implies --log)
