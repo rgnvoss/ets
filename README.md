@@ -1,54 +1,54 @@
-<p>Usage:&nbsp;ets&nbsp;&lt;options&gt;<br>
+<p>Usage: ets &lt;options&gt;<br>
 <br>
-Generate&nbsp;and&nbsp;send&nbsp;emails&nbsp;for&nbsp;testing.<br>
+Generate and send emails for testing.<br>
 <br>
-Miscellaneous&nbsp;Options:<br>
-&nbsp;&nbsp;-h,&nbsp;--help&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Display&nbsp;this&nbsp;help&nbsp;text.<br>
-&nbsp;&nbsp;-v,&nbsp;--version&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Display&nbsp;version&nbsp;information.<br>
+Miscellaneous Options:<br>
+&nbsp;&nbsp;-h, --help&nbsp;&nbsp;:&nbsp;&nbsp;Display this help text.<br>
+&nbsp;&nbsp;-v, --version&nbsp;&nbsp;:&nbsp;&nbsp;Display version information.<br>
 <br>
-Connection&nbsp;Options:<br>
-&nbsp;&nbsp;-s,&nbsp;--server,&nbsp;--target&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Receiving&nbsp;mail&nbsp;server&nbsp;(required&nbsp;to&nbsp;send).<br>
-&nbsp;&nbsp;-p,&nbsp;--port&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Target&nbsp;port.<br>
-&nbsp;&nbsp;--ssl,&nbsp;--tls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use&nbsp;SSL/TLS.<br>
+Connection Options:<br>
+&nbsp;&nbsp;-s, --server, --target&nbsp;&nbsp;:&nbsp;&nbsp;Receiving mail server (required to send).<br>
+&nbsp;&nbsp;-p, --port&nbsp;&nbsp;:&nbsp;&nbsp;Target port.<br>
+&nbsp;&nbsp;--ssl, --tls&nbsp;&nbsp;:&nbsp;&nbsp;Use SSL/TLS.<br>
 <br>
-Envelope&nbsp;Options:<br>
-&nbsp;&nbsp;-t,&nbsp;--to,&nbsp;--recipient&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Envelope&nbsp;recipient&nbsp;(required&nbsp;to&nbsp;send).<br>
-&nbsp;&nbsp;-f,&nbsp;--from,&nbsp;--sender&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Envelope&nbsp;sender.<br>
+Envelope Options:<br>
+&nbsp;&nbsp;-t, --to, --recipient&nbsp;&nbsp;:&nbsp;&nbsp;Envelope recipient (required to send).<br>
+&nbsp;&nbsp;-f, --from, --sender&nbsp;&nbsp;:&nbsp;&nbsp;Envelope sender.<br>
 <br>
-Header&nbsp;Options:<br>
-&nbsp;&nbsp;-x,&nbsp;--xm,&nbsp;--x-mailer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X-Mailer&nbsp;header<br>
-&nbsp;&nbsp;--to-header&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to:&nbsp;header&nbsp;(if&nbsp;different&nbsp;from&nbsp;recipient).<br>
-&nbsp;&nbsp;--from-header&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from:&nbsp;header&nbsp;(if&nbsp;different&nbsp;from&nbsp;sender).<br>
-&nbsp;&nbsp;--reply-to&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reply-To:&nbsp;header&nbsp;(if&nbsp;different&nbsp;from&nbsp;sender).<br>
-&nbsp;&nbsp;--return-path&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return-PATH:&nbsp;header&nbsp;(if&nbsp;different&nbsp;from&nbsp;sender).<br>
-&nbsp;&nbsp;--high,&nbsp;--low&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Message&nbsp;importance&nbsp;(default&nbsp;is&nbsp;medium).<br>
+Header Options:<br>
+&nbsp;&nbsp;-x, --xm, --x-mailer&nbsp;&nbsp;:&nbsp;&nbsp;X-Mailer header<br>
+&nbsp;&nbsp;--to-header&nbsp;&nbsp;:&nbsp;&nbsp;to: header (if different from recipient).<br>
+&nbsp;&nbsp;--from-header&nbsp;&nbsp;:&nbsp;&nbsp;from: header (if different from sender).<br>
+&nbsp;&nbsp;--reply-to&nbsp;&nbsp;:&nbsp;&nbsp;Reply-To: header (if different from sender).<br>
+&nbsp;&nbsp;--return-path&nbsp;&nbsp;:&nbsp;&nbsp;Return-PATH: header (if different from sender).<br>
+&nbsp;&nbsp;--high, --low&nbsp;&nbsp;:&nbsp;&nbsp;Message importance (default is medium).<br>
 <br>
-Email&nbsp;Content&nbsp;Options:<br>
-&nbsp;&nbsp;--mix,&nbsp;--mixed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use&nbsp;multipart/mixed&nbsp;instead&nbsp;of&nbsp;multipart/alternative.<br>
-&nbsp;&nbsp;--body-text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Text&nbsp;body&nbsp;string.<br>
-&nbsp;&nbsp;--body-html&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTML&nbsp;body&nbsp;string.<br>
-&nbsp;&nbsp;--text-encode,&nbsp;--text-charset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Text&nbsp;section&nbsp;character&nbsp;encoding.<br>
-&nbsp;&nbsp;--html-encode,&nbsp;--html-charset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTML&nbsp;section&nbsp;character&nbsp;encoding.<br>
-&nbsp;&nbsp;--encode,&nbsp;--charset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Character&nbsp;encoding&nbsp;for&nbsp;both&nbsp;text&nbsp;and&nbsp;html&nbsp;sections&nbsp;(overrides&nbsp;&nbsp;--text-encode,&nbsp;--text-charset,&nbsp;--html-encode,&nbsp;&&nbsp;--html-charset).<br>
-&nbsp;&nbsp;--url&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Include&nbsp;malicious&nbsp;URL&nbsp;in&nbsp;email.<br>
-&nbsp;&nbsp;--ssn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Include&nbsp;SSN&nbsp;numbers&nbsp;in&nbsp;email.<br>
-&nbsp;&nbsp;--av,&nbsp;--virus&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Attach&nbsp;eicar&nbsp;test&nbsp;virus&nbsp;to&nbsp;email.<br>
-&nbsp;&nbsp;--zip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Attach&nbsp;password&nbsp;protected&nbsp;zip&nbsp;file&nbsp;to&nbsp;email.<br>
-&nbsp;&nbsp;--no-text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No&nbsp;text&nbsp;body&nbsp;in&nbsp;email.<br>
-&nbsp;&nbsp;--no-html&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No&nbsp;html&nbsp;body&nbsp;in&nbsp;email.<br>
-&nbsp;&nbsp;--spam&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Include&nbsp;spam&nbsp;content.<br>
-&nbsp;&nbsp;--adult&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Include&nbsp;adult&nbsp;spam&nbsp;content&nbsp;(overrides&nbsp;--spam).<br>
-&nbsp;&nbsp;--text-body&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use&nbsp;specified&nbsp;file&nbsp;as&nbsp;text&nbsp;body.<br>
-&nbsp;&nbsp;--html-body&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use&nbsp;specified&nbsp;file&nbsp;as&nbsp;HTML&nbsp;body.<br>
-&nbsp;&nbsp;--attach&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Attach&nbsp;specified&nbsp;file.<br>
+Email Content Options:<br>
+&nbsp;&nbsp;--mix, --mixed&nbsp;&nbsp;:&nbsp;&nbsp;Use multipart/mixed instead of multipart/alternative.<br>
+&nbsp;&nbsp;--body-text&nbsp;&nbsp;:&nbsp;&nbsp;Text body string.<br>
+&nbsp;&nbsp;--body-html&nbsp;&nbsp;:&nbsp;&nbsp;HTML body string.<br>
+&nbsp;&nbsp;--text-encode, --text-charset&nbsp;&nbsp;:&nbsp;&nbsp;Text section character encoding.<br>
+&nbsp;&nbsp;--html-encode, --html-charset&nbsp;&nbsp;:&nbsp;&nbsp;HTML section character encoding.<br>
+&nbsp;&nbsp;--encode, --charset&nbsp;&nbsp;:&nbsp;&nbsp;Character encoding for both text and html sections (overrides  --text-encode, --text-charset, --html-encode, & --html-charset).<br>
+&nbsp;&nbsp;--url&nbsp;&nbsp;:&nbsp;&nbsp;Include malicious URL in email.<br>
+&nbsp;&nbsp;--ssn&nbsp;&nbsp;:&nbsp;&nbsp;Include SSN numbers in email.<br>
+&nbsp;&nbsp;--av, --virus&nbsp;&nbsp;:&nbsp;&nbsp;Attach eicar test virus to email.<br>
+&nbsp;&nbsp;--zip&nbsp;&nbsp;:&nbsp;&nbsp;Attach password protected zip file to email.<br>
+&nbsp;&nbsp;--no-text&nbsp;&nbsp;:&nbsp;&nbsp;No text body in email.<br>
+&nbsp;&nbsp;--no-html&nbsp;&nbsp;:&nbsp;&nbsp;No html body in email.<br>
+&nbsp;&nbsp;--spam&nbsp;&nbsp;:&nbsp;&nbsp;Include spam content.<br>
+&nbsp;&nbsp;--adult&nbsp;&nbsp;:&nbsp;&nbsp;Include adult spam content (overrides --spam).<br>
+&nbsp;&nbsp;--text-body&nbsp;&nbsp;:&nbsp;&nbsp;Use specified file as text body.<br>
+&nbsp;&nbsp;--html-body&nbsp;&nbsp;:&nbsp;&nbsp;Use specified file as HTML body.<br>
+&nbsp;&nbsp;--attach&nbsp;&nbsp;:&nbsp;&nbsp;Attach specified file.<br>
 <br>
-Email&nbsp;Generation&nbsp;Options:<br>
-&nbsp;&nbsp;-l,&nbsp;--loop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Generate&nbsp;specified&nbsp;number&nbsp;of&nbsp;emails.<br>
-&nbsp;&nbsp;--eml,&nbsp;--write&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Write&nbsp;email&nbsp;to&nbsp;eml&nbsp;file.<br>
-&nbsp;&nbsp;--no-send&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Do&nbsp;not&nbsp;send&nbsp;email&nbsp;(implies&nbsp;--eml/--write).<br>
-&nbsp;&nbsp;--eml-name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write&nbsp;eml&nbsp;file&nbsp;to&nbsp;specified&nbsp;file&nbsp;name&nbsp;(implies&nbsp;--eml/--write).<br>
+Email Generation Options:<br>
+&nbsp;&nbsp;-l, --loop&nbsp;&nbsp;:&nbsp;&nbsp;Generate specified number of emails.<br>
+&nbsp;&nbsp;--eml, --write&nbsp;&nbsp;:&nbsp;&nbsp;Write email to eml file.<br>
+&nbsp;&nbsp;--no-send&nbsp;&nbsp;:&nbsp;&nbsp;Do not send email (implies --eml/--write).<br>
+&nbsp;&nbsp;--eml-name&nbsp;&nbsp;:&nbsp;&nbsp;write eml file to specified file name (implies --eml/--write).<br>
 <br>
-Logging&nbsp;Options:<br>
-&nbsp;&nbsp;--log&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enable&nbsp;logging.<br>
-&nbsp;&nbsp;--log-level&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set&nbsp;logging&nbsp;level&nbsp;(implies&nbsp;--log).&nbsp;Valid&nbsp;values&nbsp;are:&nbsp;&nbsp;&nbsp;debug&nbsp;&nbsp;&nbsp;info&nbsp;&nbsp;&nbsp;warning&nbsp;(default)&nbsp;&nbsp;&nbsp;error&nbsp;&nbsp;&nbsp;critical<br>
-&nbsp;&nbsp;--log-file&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set&nbsp;name&nbsp;of&nbsp;log&nbsp;file&nbsp;(defaults&nbsp;to&nbsp;ets.log,&nbsp;implies&nbsp;--log)<br>
+Logging Options:<br>
+&nbsp;&nbsp;--log&nbsp;&nbsp;:&nbsp;&nbsp;Enable logging.<br>
+&nbsp;&nbsp;--log-level&nbsp;&nbsp;:&nbsp;&nbsp;Set logging level (implies --log). Valid values are: debug, info, warning (default), error, critical<br>
+&nbsp;&nbsp;--log-file&nbsp;&nbsp;:&nbsp;&nbsp;Set name of log file (defaults to ets.log, implies --log)<br>
