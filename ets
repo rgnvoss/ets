@@ -25,8 +25,8 @@ from pydoc import pager as paging
 
 LNAME = "Email Testing System"
 SNAME = "ETS"
-VERSION = "1.0.4"
-BUILD = "220511.09"
+VERSION = "1.0.5"
+BUILD = "220809.01"
 SUFFIX = "Beta"
 PNAME = LNAME + " (" + SNAME + ") v" + VERSION + "-" + BUILD + " " + SUFFIX
 
@@ -702,7 +702,7 @@ Envelope Options:
   -f, --from, --sender                   Envelope sender.
 
 Header Options:
-  -x, --xm, --x-mailer                   X-Mailer header
+  -x, --xm, --x-mailer                   X-Mailer header.
   --to-header                            to: header (if different from
                                          recipient).
   --from-header                          from: header (if different from
@@ -731,7 +731,7 @@ Email Content Options:
   --zip                                  Attach password protected zip
                                          file to email.
   --no-text                              No text body in email.
-  --no-html                              No html body in email.
+  --no-html                              No HTML body in email.
   --spam                                 Include spam content.
   --adult                                Include adult spam content
                                          (overrides --spam).
@@ -818,7 +818,7 @@ def main(argv):
 	loop_count = 0
 
 	try:
-		opts, args = getopt.getopt(argv,"vh:s:p:t:f:e:x:l:",["version","server=","target=", \
+		opts, args = getopt.getopt(argv,"vh:t:p:r:f:e:x:l:",["version","server=","target=", \
 			"port=","to=","recipient=","from=","sender=","loop=","ehlo=","helo=","to-header=", \
 			"from-header=","subject=","ssl","tls","spam","adult","virus","av","url","zip", \
 			"eml","write","no-send","eml-name=","no-text","no-html","xm=","x-mailer=", \
@@ -839,7 +839,11 @@ def main(argv):
 		elif opt in ("-p", "--port"):
 			port = arg
 		elif opt in ("-t", "--to", "--recipient"):
-			recipient = arg
+			if "@" in arg:
+				recipient = arg
+			else:
+				print("Invalid recipient.")
+				sys.exit()
 		elif opt in ("-f", "--from", "--sender"):
 			sender = arg
 		elif opt in ("-l", "--loop"):
