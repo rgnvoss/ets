@@ -2,6 +2,7 @@
 
 # Email Testing System (ETS)
 # Written by Rob Voss
+# rvoss@proofpoint.com
 
 import time
 import sys
@@ -26,8 +27,8 @@ from pydoc import pager as paging
 LNAME = "Email Testing System"
 SNAME = "ETS"
 VERSION = "1.0.5"
-BUILD = "220809.01"
-SUFFIX = "Beta"
+BUILD = "220927.01"
+SUFFIX = "Stable"
 PNAME = LNAME + " (" + SNAME + ") v" + VERSION + "-" + BUILD + " " + SUFFIX
 
 def spam_subject(subject_seed):
@@ -753,8 +754,8 @@ Logging Options:
   --log-level                            Set logging level (implies
                                          --log). Valid values are:
                                            debug
-                                           info
-                                           warning (default)
+                                           info (default)
+                                           warning
                                            error
                                            critical
   --log-file                             Set name of log file (defaults to
@@ -810,7 +811,7 @@ def main(argv):
 	attachfile = 'NONE'
 	is_attach = False
 	is_logging = False
-	log_level = logging.WARNING
+	log_level = logging.INFO
 	log_file = 'ets.log'
 	log_init = ''
 	log_warn = False
@@ -937,7 +938,7 @@ def main(argv):
 				log_level = logging.CRITICAL
 			else:
 				log_init = "Invalid log level. Falling back to default."
-				log_level = logging.WARNING
+				log_level = logging.INFO
 				log_warn = True
 			print (log_init)
 		elif opt == '--log-file':

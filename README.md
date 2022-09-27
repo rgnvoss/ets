@@ -50,5 +50,5 @@ Email Generation Options:<br>
 <br>
 Logging Options:<br>
 &nbsp;&nbsp;--log&nbsp;&nbsp;:&nbsp;&nbsp;Enable logging.<br>
-&nbsp;&nbsp;--log-level&nbsp;&nbsp;:&nbsp;&nbsp;Set logging level (implies --log). Valid values are: debug, info, warning (default), error, critical<br>
+&nbsp;&nbsp;--log-level&nbsp;&nbsp;:&nbsp;&nbsp;Set logging level (implies --log). Valid values are: debug, info (default), warning, error, critical<br>
 &nbsp;&nbsp;--log-file&nbsp;&nbsp;:&nbsp;&nbsp;Set name of log file (defaults to ets.log, implies --log)<br>

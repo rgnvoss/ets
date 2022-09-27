@@ -69,8 +69,8 @@ Logging Options:
   --log-level                            Set logging level (implies
                                          --log). Valid values are:
                                            debug
-                                           info
-                                           warning (default)
+                                           info (default)
+                                           warning
                                            error
                                            critical
   --log-file                             Set name of log file (defaults to
