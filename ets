@@ -26,8 +26,8 @@ from pydoc import pager as paging
 
 LNAME = "Email Testing System"
 SNAME = "ETS"
-VERSION = "1.0.5"
-BUILD = "220927.01"
+VERSION = "1.0.6"
+BUILD = "220928.02"
 SUFFIX = "Stable"
 PNAME = LNAME + " (" + SNAME + ") v" + VERSION + "-" + BUILD + " " + SUFFIX
 
@@ -641,7 +641,7 @@ def send_email(send_target, send_port, send_sender, send_recipient, send_body, s
 			except Exception as exc:
 				logging.critical( "Email failed: %s\r\nExiting." % str(exc) )
 				sys.exit( "Email failed: %s\r\nExiting." % str(exc) )
-		server.sendmail(send_sender, send_recipient, send_body)
+		server.sendmail(send_sender, send_recipient.split(","), send_body)
 		server.quit()
 		sys.stderr.flush()
 		t.flush()
@@ -698,8 +698,10 @@ Connection Options:
   --ssl, --tls                           Use SSL/TLS.
 
 Envelope Options:
-  -t, --to, --recipient                  Envelope recipient (required to
-                                         send).
+  -t, --to, --recipient                  Envelope recipient(s)(required to
+                                         send). Multiple recipients should
+                                         be separated with commas and no
+                                         spaces.
   -f, --from, --sender                   Envelope sender.
 
 Header Options:
