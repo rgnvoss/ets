@@ -2,7 +2,6 @@
 
 # Email Testing System (ETS)
 # Written by Rob Voss
-# rvoss@proofpoint.com
 
 import time
 import sys
